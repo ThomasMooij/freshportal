@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $birthdate = $_POST["birthdate"];
     $address = $_POST["address"];
 
-    $sql = "INSERT INTO employee (firstName, lastName, email, address ,birthdate) VALUES ('$firstName','$lastName', '$email', '$birthdate', '$address')";
+    $sql = "INSERT INTO employee (firstName, lastName, email, address ,birthdate) VALUES ('$firstName','$lastName', '$email','$address','$birthdate')";
 
     try {
         $conn->exec($sql);
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // get employee list
-$sql = "SELECT * FROM employee";
+$sql = "SELECT firstName, lastName, email, address, birthdate FROM employee";
 $empoyees = getData($sql, 'fetchAll');
 
 header("Content-Type: application/json");

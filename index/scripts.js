@@ -4,20 +4,19 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json()) 
             .then(data => {
             
-                const employeeList = document.getElementById("employees");
+                const employeeList = document.getElementById("employeeTable");
                 employeeList.innerHTML = "";
                 data.forEach(employee => {
-                    console.log(employee);
-                    const employeeDiv = document.createElement("div");
-                    employeeDiv.className = "employee-item";
-                    employeeDiv.innerHTML = `
-                        <p>ID: ${employee.id}</p>
-                        <p>Naam: ${employee.firstName + " " + employee.lastName}</p>
-                        <p>Email: ${employee.email}</p>
-                        <p>Geboortedatum: ${employee.birthdate}</p>
-                        <p>Adres: ${employee.address}</p>
+                    console.log(employee)
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${employee.firstName} ${employee.lastName}</td>
+                        <td>${employee.email}</td>
+                        <td>${employee.address}</td>
+                        <td>${employee.birthdate}</td>
+                        <td>...</td>
                     `;
-                    employeeList.appendChild(employeeDiv);
+                    employeeTable.appendChild(row);
                 });
             })
             .catch(error => {

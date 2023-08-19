@@ -2,12 +2,30 @@
 <html>
 <head>
     <title>Medewerkers App</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="./styles.css?v=<?php echo time(); ?>">
     <script src="./scripts.js" defer></script>
 </head>
 <body>
-    <h1>Medewerkers App</h1>
-    <button id="add">Nieuwe</button>
-    <div id="employees"></div>
+    <header id="header">
+        <h1><span>Fresh</span>Portal</h1>
+        <button id="add">Nieuwe</button>
+    </header>
+    
+    <table>
+    <thead >
+        <tr>
+            <th>naam</th>
+            <th>email</th>
+            <th>adres</th>
+            <th>geboortedatums</th>
+            <th>acties</th>
+        </tr>
+    </thead>
+    <tbody id="employeeTable">
+     <tr style="height: 10px;"></tr>
+    </tbody>
+</table>
+
+
 </body>
 </html>

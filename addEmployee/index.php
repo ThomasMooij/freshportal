@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Medewerker Toevoegen</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
     <script src="scripts.js" defer></script>
 </head>
 <body>
@@ -18,8 +18,8 @@
         <label for="email">uw email:</label>
         <input type="email" id="email" name="email" required><br>
 
-        <label for="birthDate">uw geboorte datum:</label>
-        <input type="date" id="birthDate" name="birthDate" required><br>
+        <label for="birthdate">uw geboorte datum:</label>
+        <input type="date" id="birthdate" name="birthdate" required><br>
 
         <label for="address">uw adres:</label>
         <input type="text" id="address" name="address" required><br>
