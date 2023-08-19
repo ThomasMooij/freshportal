@@ -11,14 +11,7 @@ $email = $employee['email'];
 $address = $employee['address'];
 $birthDate = $employee['birthDate'];
 
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     updateEmployee(); 
- 
-// }
 ?>
-
-
 
 <!DOCTYPE html>
 <html>
