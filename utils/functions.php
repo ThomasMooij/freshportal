@@ -28,23 +28,31 @@ if (isset($_GET["verwijderId"])) {
 //update employee
 
 
-// add new employee
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $firstName = $_POST["firstName"];
-    $lastName = $_POST["lastName"];
-    $email = $_POST["email"];
-    $birthdate = $_POST["birthdate"];
-    $address = $_POST["address"];
+// Post functions
 
-    $sql = "INSERT INTO employee (firstName, lastName, email, address ,birthdate) VALUES ('$firstName','$lastName', '$email','$address','$birthdate')";
+if (isset($_GET["action"])) {
+    if ($action === "add") {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $firstName = $_POST["firstName"];
+            $lastName = $_POST["lastName"];
+            $email = $_POST["email"];
+            $birthdate = $_POST["birthdate"];
+            $address = $_POST["address"];
+        
+            $sql = "INSERT INTO employee (firstName, lastName, email, address ,birthdate) VALUES ('$firstName','$lastName', '$email','$address','$birthdate')";
+        
+            try {
+                $conn->exec($sql);
+                echo "Medewerker succesvol toegevoegd";
+            } catch(PDOException $e) {
+                echo "Fout bij toevoegen medewerker: " . $e->getMessage();
+            }
+        }
+    }elseif ($action === "update") { 
 
-    try {
-        $conn->exec($sql);
-        echo "Medewerker succesvol toegevoegd";
-    } catch(PDOException $e) {
-        echo "Fout bij toevoegen medewerker: " . $e->getMessage();
     }
 }
+
 
 // get employee list
 $sql = "SELECT * FROM employee";

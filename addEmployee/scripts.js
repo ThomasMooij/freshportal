@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     errorMessage.textContent = data;
                 } else {
                     errorMessage.textContent = "";
-                    fetch("../utils/functions.php", {
+                    fetch("../utils/functions.php?action=add", {
                         method: "POST",
                         body: formData
                     })
