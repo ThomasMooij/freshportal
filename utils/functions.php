@@ -9,9 +9,24 @@ if (isset($_GET["email"])) {
     $checkEmailResult = getData($checkEmailQuery, 'fetch');
 
     if ($checkEmailResult) {
-        die("Dit e-mailadres is al in gebruik.");
+        die("email is al in gebruik");
     }
 }
+
+// Delete employee
+if (isset($_GET["verwijderId"])) {
+    $verwijderId = $_GET["verwijderId"];
+
+    $deleteQuery = "DELETE FROM employee WHERE id = '$verwijderId'";
+
+    try {
+        $conn->exec($deleteQuery);
+    } catch(PDOException $e) {
+        echo json_encode(["error" => "Fout bij verwijderen medewerker: " . $e->getMessage()]);
+    }
+}
+//update employee
+
 
 // add new employee
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -32,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // get employee list
-$sql = "SELECT firstName, lastName, email, address, birthdate FROM employee";
+$sql = "SELECT * FROM employee";
 $empoyees = getData($sql, 'fetchAll');
 
 header("Content-Type: application/json");

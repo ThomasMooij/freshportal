@@ -41,14 +41,18 @@ table {
     border: #4fb929 1px solid;
   }
 
-  thead {
-    width: 80vw;
+thead {
+ width: 80vw;
+ background-color: lightblue;
+ padding: 10px 0px;
+ margin: 0 auto;  
+
+} 
+
+   th{
+  margin-right: 5px;
   }
-  
-  thead th {
-    background-color: lightblue;
-    padding: 10px; 
-  }
+
   
   tbody {
     padding-top: 10px; 
