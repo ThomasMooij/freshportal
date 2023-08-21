@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     function fetchEmployees() {
-        fetch("../utils/functions.php")
+        fetch("../utils/functions.php?action=getAll")
             .then(response => response.json()) 
             .then(data => {    
                 const employeeList = document.getElementById("employeeTable");

@@ -24,6 +24,8 @@ $birthDate = $employee['birthDate'];
     <h1>Medewerker Toevoegen <?php echo $ID ?> </h1>  
     <div id="error" style="color: red;"></div> 
     <form id="updateForm" method="POST">
+        <input type="hidden" id="id" name="id" value="<?php echo $ID ?>">
+
         <label for="firstName">voornaam aanpassen:</label>
         <input type="text" id="firstName" name="firstName" value=<?php echo $firstName ?> required><br>
 

@@ -9,8 +9,7 @@
     <header id="header">
         <h1><span>Fresh</span>Portal</h1>
         <button id="add">Nieuwe</button>
-    </header>
-    
+    </header>  
     <table>
     <thead >
         <tr>
@@ -25,7 +24,5 @@
      <tr style="height: 10px;"></tr>
     </tbody>
 </table>
-
-
 </body>
 </html>

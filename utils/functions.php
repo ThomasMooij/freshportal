@@ -1,22 +1,9 @@
 <?php
 require_once("database.php");
 
-// email check
-if (isset($_GET["email"])) {
-    $email = $_GET["email"];
-
-    $checkEmailQuery = "SELECT * FROM employee WHERE email = '$email'";
-    $checkEmailResult = getData($checkEmailQuery, 'fetch');
-
-    if ($checkEmailResult) {
-        die("email is al in gebruik");
-    }
-}
-
 // Delete employee
 if (isset($_GET["verwijderId"])) {
     $verwijderId = $_GET["verwijderId"];
-
     $deleteQuery = "DELETE FROM employee WHERE id = '$verwijderId'";
 
     try {
@@ -25,14 +12,22 @@ if (isset($_GET["verwijderId"])) {
         echo json_encode(["error" => "Fout bij verwijderen medewerker: " . $e->getMessage()]);
     }
 }
-//update employee
+// check email
+if (isset($_GET["email"])) {
+    $email = $_GET["email"];
 
+    $checkEmailQuery = "SELECT * FROM employee WHERE email = '$email'";
+    $checkEmailResult = getData($checkEmailQuery, 'fetch');
 
-// Post functions
-
+    if ($checkEmailResult) {
+        echo "email is al in gebruik";
+    }
+}
+//actions
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
 
+   // ADD EMPLOYEE
     if ($action === "add") {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $firstName = $_POST["firstName"];
@@ -56,8 +51,10 @@ if (isset($_GET["action"])) {
                 echo "Fout bij toevoegen medewerker: " . $e->getMessage();
             }
         }
+     // UPDATE EMPLOYEE   
     } elseif ($action === "update") { 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $id = $_POST["id"];
             $firstName = $_POST["firstName"];
             $lastName = $_POST["lastName"];
             $email = $_POST["email"];
@@ -81,14 +78,14 @@ if (isset($_GET["action"])) {
             }
         }
     }
-}
-
+    //GET ALL 
+    elseif($action === "getAll"){
         $sql = "SELECT * FROM employee";
         $empoyees = getData($sql, 'fetchAll');
 
         header("Content-Type: application/json");
         echo json_encode($empoyees);
+}
 
-
-
+}
 ?>
