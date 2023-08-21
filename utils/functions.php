@@ -58,7 +58,6 @@ if (isset($_GET["action"])) {
         }
     } elseif ($action === "update") { 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $id = $_POST["id"];
             $firstName = $_POST["firstName"];
             $lastName = $_POST["lastName"];
             $email = $_POST["email"];
@@ -84,11 +83,12 @@ if (isset($_GET["action"])) {
     }
 }
 
+        $sql = "SELECT * FROM employee";
+        $empoyees = getData($sql, 'fetchAll');
 
-// get employee list
-$sql = "SELECT * FROM employee";
-$empoyees = getData($sql, 'fetchAll');
+        header("Content-Type: application/json");
+        echo json_encode($empoyees);
 
-header("Content-Type: application/json");
-echo json_encode($empoyees);
+
+
 ?>

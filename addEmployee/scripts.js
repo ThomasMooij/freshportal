@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch("../utils/functions.php?email=" + encodeURIComponent(email))
             .then(response => response.text())
             .then(data => {
-                // console.log(data)
+                console.log(data)
                 if (data === "Dit e-mailadres is al in gebruik.") {
                     errorMessage.textContent = data;
                 } else {

@@ -6,14 +6,14 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
 
         const formData = new FormData(updateForm);
-        formData.append("action", "update"); // Voeg een actie toe om bijwerken te onderscheiden
 
-        fetch("../utils/functions.php", {
+        fetch("../utils/functions.php?action=update", {
             method: "POST",
             body: formData
         })
         .then(response => response.text())
         .then(data => {
+            console.log(data)
             if (data.startsWith("Fout")) {
                 errorMessage.textContent = data;
             } else {
